@@ -9,7 +9,7 @@
 		var id=1;
 		function post_Answer(choice){
 			$.ajax({
-					url: 'post_answer.php',
+					url: 'http://83.212.125.48/LaunchPad/post_answer.php',
 					type: 'post',
 					data: {choice: choice , id:id},
 					success: function (data) {
@@ -19,7 +19,7 @@
 		}
 		function get_Question(){
 						$.ajax({
-							url: 'get_question.php',
+							url: 'http://83.212.125.48/LaunchPad/get_question.php',
 							type: 'GET',
 							dataType: 'json',
 							data:{q_id: id}
