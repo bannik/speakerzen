@@ -1,5 +1,5 @@
 <h1>Template Documentation</h1>
-<h2>You should change only stuff inside .body.row .col div! Rest are static!</h2>
+<h3>You should change only stuff inside .body.row .col div! Rest are static!</h3>
 
 <ul>
 	<li>
