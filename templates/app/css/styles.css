@@ -16,7 +16,6 @@ body {
     padding:0;
     margin: 0;
     background-color: #fff;
-    overflow:hidden;
     font-family: 'ProximaNova';
 }
 h1{
@@ -33,11 +32,35 @@ h1{
     padding: 15px 0;
     color: #fff;
 }
+#head .container{
+	width: 94%;
+}
+.hbtn{
+	display: inline;
+	font-weight: 300;
+	font-size: 12px;
+	padding: 19px 10px;
+}
+.hbtn:active{
+	/*box-shadow: inset 0px 0px 3px rgba(0,0,0,.4);*/
+	background-color: #3F4550;
+	text-decoration: none;
+}
 #head a{
 	color: #fff;
 }
 #head #logo{
-	text-align: center;	
+	text-align: center;
+	width: 200px;
+	display: inline;
+	position: absolute;
+	left: 27%;
+}
+#main{
+	overflow-y:auto;
+}
+#main .container{
+	width: 100%;
 }
 #main .span12{
 	margin: 50px 0px;
@@ -80,23 +103,23 @@ h1{
 	display: inline-block;
 }
 .accordion-group ul a li .span8{
-	width: 75%;
-	line-height: 100px;
+	width: 70%;
 }
 .accordion-group ul a li .span3{
-	width: 20%;
+	width: 14%;
 	margin: 0px 10px;
 }
 .accordion-group ul a li p{
 	margin: 0;
 	font-weight: 600;
-	font-size: 18px;
+	font-size: 14px;
+	padding: 15px 0px;
 }
 .chartout{
 	float: right;
 	border: 2px solid #00d073;
-	height: 100px;
-	width: 100px;
+	height: 50px;
+	width: 50px;
 	position: relative;
 }
 .chartin{
@@ -106,8 +129,24 @@ h1{
 	width: 100%;
 	background-color: #00d073;
 	text-align: center;
-	font-size: 250%;
+	font-size: 150%;
+	height: 70%;
 	line-height: 200%;
 }
-
-@media (min-width: 768px)
+.freeform{
+	text-align: center;
+	width: 100px;
+	float: right;
+	color: #6eb9ff;
+	height: 100px;
+}
+#allfans{
+	font-size: 56px;
+	line-height: 44px;
+	padding-top: 30px;
+}
+.freeform small{
+	line-height: 10px;
+}
+@media only screen and  (max-width: 641px){
+}
