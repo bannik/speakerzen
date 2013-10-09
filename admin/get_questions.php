@@ -4,7 +4,7 @@
 
 			$hostname="localhost";
 			$user = "root";
-			$pass = "";
+			$pass = "1234";
 			try {
 				$i=0;
 				$db = new PDO("mysql:host=$hostname;dbname=qs", $user, $pass,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
@@ -22,8 +22,8 @@
 				$answers = $db->query($sql);
 				while($result = $answers->fetch())
 				{
-					$Array[$i]["choice1"]=$result["choicea"];
-					$Array[$i]["choice2"]=$result["choiceb"];
+					$Array[$i]["choice1"]=$result["yes"];
+					$Array[$i]["choice2"]=$result["no"];
 					$i++;
 				}
 				}catch(PDOException $e)
