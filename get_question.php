@@ -4,7 +4,7 @@
 
 			$hostname="localhost";
 			$user = "root";
-			$pass = "";
+			$pass = "1234";
 			$id=$_GET["q_id"];
 			try {
 				$db = new PDO("mysql:host=$hostname;dbname=qs", $user, $pass,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
