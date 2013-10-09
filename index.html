@@ -1,132 +1,92 @@
-<html>
-	<head>
-		<title>Questions</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta charset="utf-8">
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-		<script>
-		var id=1;
-		function post_Answer(choice){
-			$.ajax({
-					url: 'http://83.212.125.48/LaunchPad/post_answer.php',
-					type: 'post',
-					data: {choice: choice , id:id},
-					success: function (data) {
+<html lang="eng-us">
+    <head>
+        <title>SpeakerZen</title>
+        <!-- Le wild script appeared -->
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 
-					}
-				});
-		}
-		function get_Question(){
-						$.ajax({
-							url: 'http://83.212.125.48/LaunchPad/get_question.php',
-							type: 'GET',
-							dataType: 'json',
-							data:{q_id: id}
-						})
-						.done(function(data) {
-							if(!data)
-							{
-								$('.title').html("<h3>Thank you for participating</h3>");
-								$('.choices,.button').html("");
-								$(".loader").css({
-									display: 'none'
-								});
-							}
-							else{
-								$('.title').html('<h3>'+data["id"]+'. '+data["title"]+'</h3>');
+        <!-- Le wild script appeared -->
+        <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
 
+        <!-- And here angry robots -->
+        <script>
+        var id=1;
+        function post_Answer(choice){
+            $.ajax({
+                    url: 'http://83.212.125.48/speakerzen/post_answer.php',
+                    type: 'post',
+                    data: {choice: choice , id:id},
+                    success: function (data) {
 
-								if(!data["choicec"]){
-									$('.choices').html('<li><a href="#" data-choice="1"><img src="assets/img/button.png" alt="" class="non-active" data-choice="1">'+data["choicea"]+'</a></li><li><a href="#" data-choice="2"><img src="assets/img/button.png" alt="" class="non-active" data-choice="2">'+data["choiceb"]+'</a></li>');
-								}
-								else if(data["choicee"]){
-									$('.choices').html('<li><a href="#" data-choice="1"><img src="assets/img/button.png" alt="" class="non-active">'+data["choicea"]+'</a></li><li><a href="#" data-choice="2"><img src="assets/img/button.png" alt="" class="non-active">'+data["choiceb"]+'</a></li><li><a href="#" data-choice="3"><img src="assets/img/button.png" alt="" class="non-active">'+data["choicec"]+'</a></li><li><a href="#" data-choice="4"><img src="assets/img/button.png" alt="" class="non-active">'+data["choiced"]+'</a></li><li><a href="#" data-choice="5"><img src="assets/img/button.png" alt="" class="non-active">'+data["choicee"]+'</a></li>');
-								}
-								else if(data["choiced"]){
-									$('.choices').html('<li><a href="#" data-choice="1"><img src="assets/img/button.png" alt="" class="non-active">'+data["choicea"]+'</a></li><li><a href="#" data-choice="2"><img src="assets/img/button.png" alt="" class="non-active">'+data["choiceb"]+'</a></li><li><a href="#" data-choice="3"><img src="assets/img/button.png" alt="" class="non-active">'+data["choicec"]+'</a></li><li><a href="#" data-choice="4"><img src="assets/img/button.png" alt="" class="non-active">'+data["choiced"]+'</a></li>');
-								}
-								else if(data["choicec"]){
-									$('.choices').html('<li><a href="#" data-choice="1"><img src="assets/img/button.png" alt="" class="non-active">'+data["choicea"]+'</a></li><li><a href="#" data-choice="2"><img src="assets/img/button.png" alt="" class="non-active">'+data["choiceb"]+'</a></li><li><a href="#" data-choice="3"><img src="assets/img/button.png" alt="" class="non-active">'+data["choicec"]+'</a></li>');
-								}
-								$(".loader").css({
-									display: 'none'
-								});
-							}
-						})
-						.fail(function() {
-							console.log("error");
-						})
-						.always(function() {
-							console.log("complete");
-						});}
-			$(document).on('click','.button_submit',function () {
-				var choice = $('.choices').find('img.active').data('choice');
-				if(!choice){
-					alert("please choose one answer");
-				}
-				else
-				{
-					id++;
-					$(".loader").css({
-								display: 'block'
-							});
-					post_Answer(choice,id);
-					get_Question();
-				}
-			});
-			$(document).on('click','.choices a',function () {
-				$(".active").removeClass('active');
-				$("img").addClass('non-active');
-				$(this).children().removeClass('non-active');
-				$(this).children().addClass('active');
-			});
+                    }
+                });
+        }
+        function get_Question(){
+                        $.ajax({
+                            url: 'http://83.212.125.48/speakerzen/get_question.php',
+                            type: 'GET',
+                            dataType: 'json',
+                            data:{q_id: id}
+                        })
+                        .done(function(data) {
+                            if(!data)
+                            {
+                            	$('.multibtn,.nextbtn').html("");
+                                $('#qtitle').html("Thank you for participating");
+                                $(".loader").css({
+                                    display: 'none'
+                                });
+                            }
+                            else{
+                                $("#qtitle").html(data["title"]);
+                                $(".loader").css({
+                                    display: 'none'
+                                });
+                            }
+                        })
+                        .fail(function() {
+                            console.log("error");
+                        })
+                        .always(function() {
+                            console.log("complete");
+                        });}
+            $(document).on('click','.multibtn button',function () {
+                 var choice = $(this).data("choice");
+                if(choice==null){
+                    alert("please choose one answer");
+                }
+                else
+                {
+                    id++;
+                    $(".loader").css({
+                                display: 'block'
+                            });
+                    post_Answer(choice,id);
+                    get_Question();
+                }
+            });
 
-			$(document).ready(function($) {
-				function lsTest(){
-				    var test = 'test';
-				    try {
-				        localStorage.setItem(test, test);
-				        localStorage.removeItem(test);
-				        return true;
-				    } catch(e) {
-				        return false;
-				    }
-				}
+            $(document).ready(function($) {
+                get_Question();
+                });
+        </script>
+    </head>
+    <body>
+        <div class="header row">
+            <div class="col">
+                    <h1>Google Launchpad</h1>
+                    <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="loader"><img src="assets/img/ajax-loader.gif" alt="" ></div>
+        <div class="body row">
+            <div class="col">
+                <h3 id="qtitle">Would it be ok if I go with a big question?</h3>
+                <div class="multibtn">
+                    <button class="btn btn-green" data-choice="1">YES!</button>
+                    <button class="btn btn-red" data-choice="0">NO!</button>
+                </div>
+            </div>
 
-				if(lsTest() === true){
-				    // there is localstorage
-				}else{
-				    // there is no localstorage
-				}
-				get_Question();
-
-				});
-		</script>
-	</head>
-	<body>
-	<div class="container">
-		<div class="header">
-				<h3>
-					Google LaunchPad
-				</h3>
-		</div>
-		<div class="loader"><img src="assets/img/ajax-loader.gif" alt="" ></div>
-		<div class="title">
-			<h3>
-
-			</h3>
-		</div>
-		<div class="choices">
-
-		</div>
-		<div class="button">
-			<a href="#" class="button_submit">SUBMIT</a>
-		</div>
-
-		<div class="footer">
-				<p> Copyright © Google LaunchPad 2013 </p>
-		</div>
-	</div>
-	</body>
+        </div>
+    </body>
 </html>
