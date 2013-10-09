@@ -3,7 +3,7 @@
 		<title>Questions</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="../assets/css/main.css" />
+		<link rel="stylesheet" href="main.css" />
 		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 		<script>
 		function updateAnswers(){
@@ -18,7 +18,7 @@
 				{
 					if (data.hasOwnProperty(i))
 					{
-						$(".content").append('<div class="title"><h3>'+data[i]["title"]+'</h3><p><b>'+data[i]["choice1"]+'</b> people replied '+data[i]["choicea"]+'</p><p><b>'+data[i]["choice2"]+'</b> people replied '+data[i]["choiceb"]+'.</p></div>');
+						$(".content").append('<div class="title"><h3>'+data[i]["title"]+'</h3><p><b>'+data[i]["choice1"]+'</b> people replied Yes</p><p><b>'+data[i]["choice2"]+'</b> people replied No.</p></div>');
 					}
 				}
 				$(".loader").css({
@@ -46,14 +46,6 @@
 		<div class="loader"><img src="../assets/img/ajax-loader.gif" alt="" ></div>
 		<div class="content">
 
-		</div>
-		<div class="details">
-			<p>QR Code</p>
-			<img src="../assets/img/qrcode.png" alt="">
-			<p>short link</p>
-			<a class="short-link">
-				http://goo.gl/UJyYI6
-			</a>
 		</div>
 	</body>
 </html>
