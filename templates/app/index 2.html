@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Diabetes App</title>
+		<meta name="HandheldFriendly" content="True">
+		<meta name = "viewport"  content="width=device-width, user-scalable=no, initial-scale=1.0,maximum-scale=1.0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		
+		<link rel="stylesheet" href="css/iconset.css" type="text/css" />
+		<link rel="stylesheet" href="css/layout.css" type="text/css" />
+		<link rel="stylesheet" href="css/calendario.css"></script>
+		<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+		<link rel="stylesheet" href="css/list_style.css" type="text/css" />
+		
+		<script src="cordova-2.3.0.js" type="text/javascript"></script>
+		<script src="js/jq.mobi.min.js"></script>
+		
+		<!--<script src="js/app.js"></script>
+	    --><script src="js/jq.hasEvent.js"></script>
+	    <script src="js/lawnchair/lawnchair.min.js"></script>
+	    
+	    <script src="js/xdate.min.js"></script>
+	    <script src="js/jq.calendario.js"></script>
+
+	    <script src="js/charts/flotr2.min.js"></script>
+	  	<script src="js/mobapp.js"></script>
+	    <script src="js/jq.ajaxload.js"></script>
+	    <script src="js/css-beziers.js"></script>
+
+	    <script type="text/javascript">
+	    	
+	   		var detectStorage=localStorage.getItem('invoked');
+	
+			//if(! detectStorage){ setTimeout(toggleMenu,500);	}
+
+	    	function navScreen(el){ var hrf = $(el).attr('data-nav'); $.ajaxload(hrf);};
+	    	function toggleMenu(){
+
+				if($('#menu').hasClass('menuOpened')){
+				    $('#main').css({'-webkit-transform': 'translate3d(0, 0, 0)'});
+					$('#menu').css({'-webkit-transform': 'translate3d(0px, 0, 0)'}).removeClass('menuOpened');
+					localStorage.setItem('invoked',true);
+				}else{
+					
+					$('#main').css({'-webkit-transform': 'translate3d(59px, 0, 0)', 'position': 'absolute', 'z-index': '100'});
+					$('#menu').css({'-webkit-transform': 'translate3d(0, 0, 0)','position': 'absolute', 'z-index': '99'}).addClass('menuOpened');	
+				}
+			}
+
+			mobapp.getInstance();
+	       $('document').ready(function(){
+	        	$.ajaxload('dashboard');
+	        	//$.ajaxload('planner_form');
+
+
+	        	//MENU TOGGLING
+		        $('#menu > ul > li').on('click',function(){
+		            toggleMenu();
+		            var id = $(this).attr('data-href').replace('#', '');
+		            $.ajaxload(id);
+		        });
+		        
+	      	});
+	    </script>
+
+	</head>
+	<body>
+		<div id="menu" class="swipe menu col scroll-y">
+			<ul>
+				<li class="icon-home" data-href="#dashboard"></li>
+				<li class="icon-eye-open" data-href="#tracker"></li>
+				<li class="icon-calendar" data-href="#planner_calendar"></li>
+				<li class="icon-bar-chart" data-href="#graph"></li>
+				<li class="icon-food" data-href="#food"></li>
+				<li class="icon-medkit" data-href="#pharmacy"></li>
+				<li class="icon-cog" data-href="#account"></li>
+			</ul>			
+		</div>
+		<div id="main" class="col univerce swipe">
+			<!--
+			<div class="clear row header">
+				<a href="#" class="floatLeft" id="invokeMenu"></a>
+				<h1>Diabetes</h1>
+			</div>
+			<div class="row body">
+				<div class="span4">
+					<div id="insDaily" class="ins-wgt-inner">
+					    <span class='toplabel'>0</span>
+					    <span class='bottomlabel'>Daily</span>
+					</div>
+					<div id="ins24h"   class="ins-wgt-inner">
+					    <span class='toplabel' >0</span>
+					    <span class='bottomlabel'>24h</span>
+					</div>
+					<div id="insExtra" class="ins-wgt-inner">
+					    <span class='toplabel'>0</span>
+					    <span class='bottomlabel'>Extra</span>
+					</div>
+				</div>
+				<div class="span8">
+					<div id="pln-wgt" class="frst_wdg framed">
+					    <div id="plnInd" class="columns">
+					    	<span id="pln_tm">No event</span>
+					    	<span id="pln_tt">next</span>
+					    </div>
+					    <div id="plnBoard" class="columns">
+							<span data-typename="meal"><abbr id="mlInd">0/0</abbr> Meal</span>
+							<span data-typename="meds"><abbr id="mdInd">0/0</abbr> Meds</span>
+							<span data-typename="activity"><abbr id="acInd">0/0</abbr> Activity</span>
+					    </div>
+					</div>
+				</div>
+				<div class="span8">
+					<div id="fd-wgt" class="framed">
+			            <div id="fdInd" class="column">
+							<span id="food_tm"><abbr></abbr> g of carbs</span>
+		
+			            </div>
+			            <div id="fdBoard" class="column">
+			            	<span id="pInd"><abbr></abbr> Protein</span>
+							<span id="fInd"><abbr></abbr> Fat</span>
+							<span id="kInd"><abbr></abbr> Kcals</span>
+			            </div>
+		        	</div>
+				</div>
+				<div style="clear: both;"></div>
+				<div class="span10">
+					<div id="bgInd">
+						            <div>
+						                <div id="lastBG">0 mg/dl</div>
+						                <div id="BgStatus"><i class="icon "> </i><span>None</span></div>
+						                <div id="BgLastTime">?</div>
+						            </div>
+						        </div>
+					
+						        <div id="bgChart">
+						            <span id="sparkline">No data to display on the graph</span>
+						        </div>
+						        <div style="clear:both;"></div>
+				</div>
+			</div>
+			<div class="row footer bbutton">
+				<button class="orange" id="btnLaunch">Launch Tracker</button>
+			</div>
+		-->
+		</div>
+	</body>
+	
+</html>
