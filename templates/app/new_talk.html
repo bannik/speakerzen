@@ -10,7 +10,7 @@
 		<!-- le wild script -->
 		<script src="http://code.jquery.com/jquery.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/detailed.js"></script>
+		<script type="text/javascript" src="js/new_talk.js"></script>
 		<meta name = "viewport"  content="width=device-width, user-scalable=no, initial-scale=1.0,maximum-scale=1.0">
 	</head>
 	<body>
@@ -33,12 +33,14 @@
 					<div class="box">
 						<div class="talktitle">
 							<h4>Title</h4>
-							<input type="text" placeholder="My perfect speach...">
+							<input type="text" placeholder="My perfect speach..."></input>
 						</div>
 						<div class="quests">
 							<h4>Questions</h4>
-							<input type="text" placeholder="Do you like bacon?">
-							<button class="btn btn-green">ADD QUESTION!</button>
+							<div id="questions">
+								<input type="text" placeholder="Do you like bacon?"></input>
+							</div>
+							<button class="btn btn-green" id="add_question">ADD QUESTION!</button>
 						</div>
 					</div>
 	            </div>
