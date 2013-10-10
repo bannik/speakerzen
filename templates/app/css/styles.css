@@ -33,6 +33,7 @@ h1{
     z-index: 100;
     padding: 15px 0;
     color: #fff;
+    width: 100%;
 }
 #head .container{
 	width: 94%;
@@ -53,10 +54,14 @@ h1{
 }
 #head #logo{
 	text-align: center;
-	width: 200px;
+	width: 100%;
+	left: 0;
+	text-align: center;
 	display: inline;
 	position: absolute;
-	left: 27%;
+}
+#logo img{
+	width: 90px;
 }
 #main{
 	overflow-y:auto;
