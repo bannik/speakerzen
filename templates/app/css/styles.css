@@ -242,5 +242,65 @@ h1{
 	float: right;
 	height: 20px;
 }
+.talktitle, .quests{
+    padding: 10px;
+}
+.btn{
+    margin: 5px 0px;
+    width: 100%;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 12px;
+    padding: 10px 0px;
+    background-image: none;
+    cursor: pointer;
+}
+.btn.btn-green{
+    background-color: #63c6a3;
+    border:none;
+    color: white;
+    text-shadow: 0px 2px 0px rgba(0,0,0,.2);
+    box-shadow: inset 0px -3px 0px rgba(0,0,0,.2);
+    -webkit-transition: .7s opacity;
+}
+.btn-green:hover{
+    opacity: .8;
+}
+.btn-green:active{
+    box-shadow: none;
+}
+.talktitle input[type="text"], .quests input[type="text"]{
+	width: 100%;
+	border-radius: 0;
+    border-color: #eaeaea;
+    box-shadow: none;
+    color: #555;
+    padding:20px 5px;
+    font-size: 10px;
+    font-family: 'ProximaNova';
+}
+.talktitle{
+	border-bottom: 1px solid #eaeaea;
+}
+#ok{
+	color: white;
+	position: absolute;
+	right: 20px;
+	background-image: none;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	height: 50px;
+	top: 0;
+	z-index: 1000;
+}
+#ok:active{
+	background-color: #3F4550;
+	text-decoration: none;
+}
+#ok img{
+	width: 10px;
+	padding: 5px 0px;
+}
 @media only screen and  (max-width: 641px){
 }
