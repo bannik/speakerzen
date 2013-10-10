@@ -69,8 +69,7 @@ $(document).ready(function($) {
 								if (data.hasOwnProperty(i))
 								{
 	                    			$("#accordion2").prepend('<div class="accordion-group"><div class="accordion-heading"><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapse'+i+'">'+data[i]["talks_title"]+'</a></div><div id="collapse'+i+'" class="accordion-body collapse" style="height: 0px;"><div class="accordion-inner" ><ul id="question'+i+'"><a href="#"><li><div class="span8"><p>Do you like bacon?</p></div><div class="span3"><div class="chartout"><div class="chartin">70%</div></div></div></li></a><a href="#"><li><div class="span8"><p id="qesttitle">Do you like bacon?</p></div><div class="span3"><div class="chartout"><div class="chartin">70%</div></div></div></li></a><a href="#"><li><div class="span8"><p>Do you like bacon?</p></div><div class="span3"><div class="chartout"><div class="chartin">70%</div></div></div></li></a></ul></div></div></div>');
-	                    				get_Questions(tid,i);
-	                    				tid++;
+	                    				get_Questions(data[i]["talk_id"],i);
 								}
 	                    	}
 	                    })
@@ -88,7 +87,7 @@ $(document).ready(function($) {
 						{
 							if (data.hasOwnProperty(i))
 							{
-                    			$("#question"+count_qid).append('<a href="#"><li><div class="span8"><p>'+data[i]["question_title"]+'</p></div><div class="span3"><div class="chartout" id="chartout'+talk_id+i+'"><div class="chartin" id="chartin'+talk_id+i+'">80%</div></div></div></li></a>');
+                    			$("#question"+count_qid).append('<a href="detailed.html?qid='+data[i]["question_id"]+'"><li><div class="span8"><p>'+data[i]["question_title"]+'</p></div><div class="span3"><div class="chartout" id="chartout'+talk_id+i+'"><div class="chartin" id="chartin'+talk_id+i+'">80%</div></div></div></li></a>');
                     			get_Answers(data[i]['question_id'],talk_id+i);
 							}
                     	}
