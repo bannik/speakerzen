@@ -26,6 +26,9 @@ h1{
     letter-spacing: 1px;
     text-shadow: 0px 1px 0px rgba(255,255,255,.5);
 }
+a:hover{
+	text-decoration: none;
+}
 .left{
 	float: left;
 }
@@ -183,9 +186,9 @@ h1{
 }
 .boxgraph{
 	width: 100%;
-	max-height: 120px;
-	min-height: 120px;
-	height: 120px;
+	max-height: 200px;
+	min-height: 200px;
+	height: 300px;
 }
 .boxgraph img{
 	width: 100%;
