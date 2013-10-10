@@ -87,7 +87,7 @@ $(document).ready(function($) {
 						{
 							if (data.hasOwnProperty(i))
 							{
-                    			$("#question"+count_qid).append('<a href="detailed.html?qid='+data[i]["question_id"]+'"><li><div class="span8"><p>'+data[i]["question_title"]+'</p></div><div class="span3"><div class="chartout" id="chartout'+talk_id+i+'"><div class="chartin" id="chartin'+talk_id+i+'">80%</div></div></div></li></a>');
+                    			$("#question"+count_qid).append('<a href="detailed.html?qid='+data[i]["question_id"]+'"><li><div class="span8 left"><p>'+data[i]["question_title"]+'</p></div><div class="span3 right"><div class="chartout" id="chartout'+talk_id+i+'"><div class="chartin" id="chartin'+talk_id+i+'">80%</div></div></div><div class="clearfix"></div></li></a>');
                     			get_Answers(data[i]['question_id'],talk_id+i);
 							}
                     	}
