@@ -50,11 +50,14 @@ h1{
 	text-decoration: none;
 }
 #head a{
+	position: relative;
+	z-index: 1000;	
 	color: #fff;
 }
 #head #logo{
 	text-align: center;
 	width: 100%;
+	z-index: 1;
 	left: 0;
 	text-align: center;
 	display: inline;
