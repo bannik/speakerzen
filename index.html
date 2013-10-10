@@ -9,12 +9,14 @@
 
         <!-- And here angry robots -->
         <script>
-        var id=1;
+        var talk_id=14;
+        var count=0;
+        var qid;
         function post_Answer(choice){
             $.ajax({
                     url: 'http://83.212.125.48/speakerzen/post_answer.php',
                     type: 'post',
-                    data: {choice: choice , id:id},
+                    data: {choice: choice , qid:qid},
                     success: function (data) {
 
                     }
@@ -25,7 +27,7 @@
                             url: 'http://83.212.125.48/speakerzen/get_question.php',
                             type: 'GET',
                             dataType: 'json',
-                            data:{q_id: id}
+                            data:{tid: talk_id,count:count}
                         })
                         .done(function(data) {
                             if(!data)
@@ -37,10 +39,12 @@
                                 });
                             }
                             else{
-                                $("#qtitle").html(data["title"]);
+                                qid=data["question_id"];
+                                $("#qtitle").html(data["question_title"]);
                                 $(".loader").css({
                                     display: 'none'
                                 });
+
                             }
                         })
                         .fail(function() {
@@ -56,11 +60,11 @@
                 }
                 else
                 {
-                    id++;
+                    count++;
                     $(".loader").css({
                                 display: 'block'
                             });
-                    post_Answer(choice,id);
+                    post_Answer(choice,qid);
                     get_Question();
                 }
             });
