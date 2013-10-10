@@ -47,6 +47,7 @@ jQuery(document).ready(function($) {
                    			});
 
 			}
+			$(".boxlatest > .left").html("<p class='yes_p'>Yes</p><p class='no_p'>No</p>");
 			$(".boxlatest > .right").html("<p>"+data['yes']+"</p><p>"+data['no']+"</p>");
 
 	})
